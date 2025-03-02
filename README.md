@@ -74,4 +74,5 @@ test.py: A test script to run the Wordle Bot logic without the web interface.
 ## Acknowledgements
 
 Flask - A lightweight WSGI web application framework in Python.
+
 Progressbar2 - A text progress bar library for Python.
