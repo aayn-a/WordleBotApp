@@ -12,8 +12,34 @@
         <form id="guess-form">
             <label for="guess">Enter your guess:</label>
             <input type="text" id="guess" name="guess" required>
-            <label for="feedback">Enter feedback (e.g., gray,gray,gray,green,gray):</label>
-            <input type="text" id="feedback" name="feedback" required>
+            <label for="feedback">Enter feedback:</label>
+            <div id="feedback-container">
+                <select class="feedback-dropdown" name="feedback0">
+                    <option value="gray">Gray</option>
+                    <option value="yellow">Yellow</option>
+                    <option value="green">Green</option>
+                </select>
+                <select class="feedback-dropdown" name="feedback1">
+                    <option value="gray">Gray</option>
+                    <option value="yellow">Yellow</option>
+                    <option value="green">Green</option>
+                </select>
+                <select class="feedback-dropdown" name="feedback2">
+                    <option value="gray">Gray</option>
+                    <option value="yellow">Yellow</option>
+                    <option value="green">Green</option>
+                </select>
+                <select class="feedback-dropdown" name="feedback3">
+                    <option value="gray">Gray</option>
+                    <option value="yellow">Yellow</option>
+                    <option value="green">Green</option>
+                </select>
+                <select class="feedback-dropdown" name="feedback4">
+                    <option value="gray">Gray</option>
+                    <option value="yellow">Yellow</option>
+                    <option value="green">Green</option>
+                </select>
+            </div>
             <button type="submit">Submit</button>
         </form>
         <div id="result"></div>
@@ -23,14 +49,14 @@
         document.getElementById('guess-form').addEventListener('submit', function(event) {
             event.preventDefault();
             const guess = document.getElementById('guess').value;
-            const feedback = document.getElementById('feedback').value.split(',');
+            const feedback = Array.from(document.getElementsByClassName('feedback-dropdown')).map(dropdown => dropdown.value);
 
             fetch('/process_guess', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
                 },
-                body: `guess=${guess}&feedback=${feedback.join(',')}`,
+                body: `guess=${guess}&feedback0=${feedback[0]}&feedback1=${feedback[1]}&feedback2=${feedback[2]}&feedback3=${feedback[3]}&feedback4=${feedback[4]}`,
             })
             .then(response => response.json())
             .then(data => {
