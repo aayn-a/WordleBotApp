@@ -36,6 +36,14 @@ input {
     border-radius: 4px;
 }
 
+.feedback-dropdown {
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 5px;
+}
+
 button {
     padding: 10px;
     margin-top: 20px;
@@ -58,6 +66,10 @@ button:hover {
 
 #guesses-container {
     margin-top: 20px;
+}
+
+#guess{
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .guess-row {
