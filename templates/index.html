@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Wordle Bot</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Wordle Bot</h1>
+        <form id="guess-form">
+            <label for="guess">Enter your guess:</label>
+            <input type="text" id="guess" name="guess" required>
+            <label for="feedback">Enter feedback (e.g., gray,gray,gray,green,gray):</label>
+            <input type="text" id="feedback" name="feedback" required>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="result"></div>
+        <div id="guesses-container"></div>
+    </div>
+    <script>
+        document.getElementById('guess-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const guess = document.getElementById('guess').value;
+            const feedback = document.getElementById('feedback').value.split(',');
+
+            fetch('/process_guess', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `guess=${guess}&feedback=${feedback.join(',')}`,
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').innerText = `Best next guess: ${data.best_guess}`;
+                addGuessToContainer(guess, feedback);
+            });
+        });
+
+        function addGuessToContainer(guess, feedback) {
+            const container = document.getElementById('guesses-container');
+            const guessRow = document.createElement('div');
+            guessRow.className = 'guess-row';
+
+            for (let i = 0; i < guess.length; i++) {
+                const letterBox = document.createElement('div');
+                letterBox.className = `letter-box ${feedback[i]}`;
+                letterBox.innerText = guess[i];
+                guessRow.appendChild(letterBox);
+            }
+
+            container.appendChild(guessRow);
+        }
+    </script>
+</body>
+</html>
