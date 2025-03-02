@@ -10,7 +10,7 @@ Wordle Bot is a Python-based application that helps you find the best next guess
 
 ## Requirements
 
-- Python 3.x
+- Python 3.12
 - Flask
 - Progressbar2
 
