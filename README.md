@@ -54,13 +54,21 @@ The script will print the best next guesses based on the provided guesses and fe
 
 ## File Descriptions
 app.py: The main Flask application that serves the web interface and processes guesses.
+
 wordEliminator.py: Contains the wordEliminator function that filters words based on feedback.
+
 entropyCalculations.py: Contains the calculations function that calculates the entropy for each word.
+
 validWordleAnswers.txt: A text file containing the valid Wordle answers. (https://gist.github.com/cfreshman/a03ef2cba789d8cf00c08f767e0fad7b)
+
 wordlewords.txt: A text file containing the words that can be guessed in Wordle. (https://gist.github.com/dracos/dd0668f281e685bad51479e5acaadb93)
+
 index.html: The HTML template for the web interface.
+
 styles.css: The CSS file for styling the web interface.
+
 test.py: A test script to run the Wordle Bot logic without the web interface.
+
 
 ## Acknowledgements
 
