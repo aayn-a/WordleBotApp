@@ -27,16 +27,17 @@ Wordle Bot is a Python-based application that helps you find the best next guess
    pip install flask progressbar2
 
 3. Ensure this directory structure
-  WordleBotApp/
-  ├── app.py
-  ├── wordEliminator.py
-  ├── entropyCalculations.py
-  ├── validWordleAnswers.txt
-  ├── wordlewords.txt
-  ├── templates/
-  │   └── index.html
-  └── static/
-      └── styles.css
+   
+        WordleBotApp/
+        ├── app.py
+        ├── wordEliminator.py
+        ├── entropyCalculations.py
+        ├── validWordleAnswers.txt
+        ├── wordlewords.txt
+        ├── templates/
+        │   └── index.html
+        └── static/
+            └── styles.css
 
 
 ## Usage
