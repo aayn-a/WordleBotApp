@@ -54,6 +54,8 @@ Run the test script:
 The script will print the best next guesses based on the provided guesses and feedback.
 
 ## File Descriptions
+feedback.py: Contains the getFeedback function which returns the feedback on a guess given a word and a target word
+
 app.py: The main Flask application that serves the web interface and processes guesses.
 
 wordEliminator.py: Contains the wordEliminator function that filters words based on feedback.
