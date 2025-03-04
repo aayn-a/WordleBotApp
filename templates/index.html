@@ -41,6 +41,7 @@
                 </select>
             </div>
             <button type="submit">Submit</button>
+            <button type="reset" id="reset-button"> Reset </button>
         </form>
         <div id="result"></div>
         <div id="guesses-container"></div>
@@ -60,8 +61,12 @@
             })
             .then(response => response.json())
             .then(data => {
-                document.getElementById('result').innerText = `Best next guess: ${data.best_guess}`;
-                addGuessToContainer(guess, feedback);
+                if (data.best_guess == "Already guessed!") {
+                    document.getElementById('result').innerText = data.best_guess;
+                } else {
+                    document.getElementById('result').innerText = `Best next guess: ${data.best_guess}`;
+                    addGuessToContainer(guess, feedback);
+                }
             });
         });
 
@@ -79,6 +84,18 @@
 
             container.appendChild(guessRow);
         }
+        document.getElementById('reset-button').addEventListener('click', function() {
+            fetch('/reset', {
+                method: 'POST',
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').innerText = '';
+                document.getElementById('guesses-container').innerHTML = '';
+                console.log(data.message);
+            });
+        });
+
     </script>
 </body>
 </html>
