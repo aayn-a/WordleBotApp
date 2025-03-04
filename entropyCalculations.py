@@ -1,9 +1,5 @@
-import pandas as pd
-import numpy as np
-import random
 from feedback import getFeedback
 import math
-import matplotlib as plt
 import progressbar
 
 
